@@ -30,6 +30,12 @@ fastify.get("/", async (_, reply) => {
 // Route to handle incoming calls from Twilio
 fastify.all("/incoming-call-eleven", async (request, reply) => {
   // Generate TwiML response to connect the call to a WebSocket stream
+
+  console.log("[Twilio] Incoming call received", {
+    host: request.headers.host,
+    method: request.method,
+  });
+
   const twimlResponse = `<?xml version="1.0" encoding="UTF-8"?>
     <Response>
     <Connect>
